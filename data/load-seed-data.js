@@ -1,7 +1,8 @@
 const client = require('../lib/client');
 // import our seed data:
-const animals = require('./animals.js');
-const usersData = require('./users.js');
+const paintsData = require('./paints.js');
+const units = require('./units.js');
+const modelsData = require('./models.js');
 
 run();
 
@@ -10,28 +11,28 @@ async function run() {
   try {
     await client.connect();
 
-    const users = await Promise.all(
-      usersData.map(user => {
+    const paints = await Promise.all(
+      paintsData.map(paint => {
         return client.query(`
-                      INSERT INTO users (email, hash)
+                      INSERT INTO paints (name, formula)
                       VALUES ($1, $2)
                       RETURNING *;
                   `,
-        [user.email, user.hash]);
+        [paint.name, paint.formula]);
       })
     );
-      
-    const user = users[0].rows[0];
+    console.log(paints, 'entered');
+    // const paint = paints[0].rows[0];
 
-    await Promise.all(
-      animals.map(animal => {
-        return client.query(`
-                    INSERT INTO animals (name, coolFactor, owner_id)
-                    VALUES ($1, $2, $3);
-                `,
-        [animal.name, animal.coolFactor, user.id]);
-      })
-    );
+    // await Promise.all(
+    //   modelsData.map(model => {
+    //     return client.query(`
+    //                 INSERT INTO models (name, coolFactor, owner_id)
+    //                 VALUES ($1, $2, $3);
+    //             `,
+    //     [model.name, animal.coolFactor, user.id]);
+    //   })
+    // );
     
 
     console.log('seed data load complete');
