@@ -30,7 +30,7 @@ async function run() {
                 );
         `);
 
-    console.log('Tables created sucessfully.');
+    console.log('Tables created successfully.');
   }
   catch(err) {
     console.log(err);

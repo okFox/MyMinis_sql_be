@@ -13,7 +13,7 @@ async function run() {
             DROP TABLE IF EXISTS units;
         `);
 
-    console.log('Tables dropped sucessfully');
+    console.log('Tables dropped successfully.');
   }
   catch(err) {
     console.log(err);
