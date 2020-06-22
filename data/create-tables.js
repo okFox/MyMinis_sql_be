@@ -1,37 +1,42 @@
 const client = require('../lib/client');
 
-// async/await needs to run in a function
 run();
 
 async function run() {
 
   try {
-    // initiate connecting to db
+
     await client.connect();
 
-    // run a query to create tables
     await client.query(`
-                CREATE TABLE users (
-                    id SERIAL PRIMARY KEY,
-                    email VARCHAR(256) NOT NULL,
-                    hash VARCHAR(512) NOT NULL
+                CREATE TABLE paints (
+                  id SERIAL PRIMARY KEY NOT NULL,
+                  name VARCHAR(256) NOT NULL,
+                  formula VARCHAR(256),
+              );
+                CREATE TABLE units (
+                    id SERIAL PRIMARY KEY NOT NULL,
+                    title VARCHAR(512),
+                    faction VARCHAR(256),
+                    game VARCHAR(256) NOT NULL,
+                    painted BOOL DEFAULT false,
+                    models TEXT[] REFERENCES models(id)
                 );           
-                CREATE TABLE animals (
+                CREATE TABLE models (
                     id SERIAL PRIMARY KEY NOT NULL,
                     name VARCHAR(512) NOT NULL,
-                    coolFactor INTEGER NOT NULL,
-                    owner_id INTEGER NOT NULL REFERENCES users(id)
-            );
+                    url VARCHAR(1024),
+                    paints_used  TEXT[] NOT NULL REFERENCES paints(id)
+                );
         `);
 
-    console.log('create tables complete');
+    console.log('Tables created sucessfully.');
   }
   catch(err) {
-    // problem? let's see the error...
     console.log(err);
   }
   finally {
-    // success or failure, need to close the db connection
+
     client.end();
   }
 

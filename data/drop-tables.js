@@ -8,11 +8,12 @@ async function run() {
     await client.connect();
     
     await client.query(`
-            DROP TABLE IF EXISTS users CASCADE;
-            DROP TABLE IF EXISTS animals;
+            DROP TABLE IF EXISTS paints CASCADE;
+            DROP TABLE IF EXISTS models CASCADE;
+            DROP TABLE IF EXISTS units;
         `);
 
-    console.log('drop tables complete');
+    console.log('Tables dropped sucessfully');
   }
   catch(err) {
     console.log(err);

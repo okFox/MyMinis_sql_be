@@ -10,7 +10,7 @@
 module.exports = [
   {  
     title: 'base set terrain',
-    identity: null,
+    faction: null,
     type: ['terrain'],
     game: 'Warcry',
     painted: false,
@@ -18,7 +18,7 @@ module.exports = [
   },
   { 
     title: 'Iron Golems',
-    identity: 'irongolems',
+    faction: 'irongolems',
     type: ['unit', 'warband'],
     game: 'Warcry',
     painted: false,
@@ -26,7 +26,7 @@ module.exports = [
   },
   {  
     title: 'Untamed Beasts',
-    identity: 'untamedbeasts',
+    faction: 'untamedbeasts',
     type: ['unit', 'warband'],
     game: 'Warcry',
     painted: false
@@ -40,7 +40,7 @@ module.exports = [
   },
   {  
     title: 'Splintered Fang',
-    identity: 'splinteredfang',
+    faction: 'splinteredfang',
     type: ['unit', 'warband'],
     game: 'Warcry',
     painted: false,
@@ -48,7 +48,7 @@ module.exports = [
   },
   {  
     title: 'Chaotic Beasts',
-    identity: null,
+    faction: null,
     type: ['enemy'],
     game: 'Warcry',
     painted: false,
@@ -56,7 +56,7 @@ module.exports = [
   },
   {  
     title: 'Start Collecting: Fyreslayers',
-    identity: 'fyreslayers',
+    faction: 'fyreslayers',
     type: ['army', 'unit'],
     game: 'Warhammer: Age of Sigmar',
     painted: false,
@@ -64,11 +64,11 @@ module.exports = [
   },
   {  
     title: 'Doomseeker',
-    identity: 'fyreslayers',
+    faction: 'fyreslayers',
     type: ['single', 'fyreslayers'],
     game: 'Warhammer: Age of Sigmar',
     painted: false,
-    models: []
+    models: ['Joe Doomseeker']
   },
   {  
     title: 'Start Collecting: Space Marines',
