@@ -10,7 +10,9 @@ async function run() {
     await client.query(`
             DROP TABLE IF EXISTS paints CASCADE;
             DROP TABLE IF EXISTS models CASCADE;
-            DROP TABLE IF EXISTS units;
+            DROP TABLE IF EXISTS units CASCADE;
+            DROP TABLE IF EXISTS model_paint CASCADE;
+
         `);
 
     console.log('Tables dropped successfully.');

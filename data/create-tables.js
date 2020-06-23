@@ -23,14 +23,17 @@ async function run() {
                 painted BOOL DEFAULT false
               ); 
               CREATE TABLE models (
+                idunit INTEGER REFERENCES units(idunit),
+                description VARCHAR(512) NOT NULL,
+                image TEXT
+              );
+              CREATE TABLE model_paint (
                 paint_id INTEGER,
                 unit_id INTEGER,
-                PRIMARY KEY (paint_id, unit_id),
-                description VARCHAR(512) NOT NULL,
-                image TEXT,
                 FOREIGN KEY (paint_id) REFERENCES paints (idpaint),
-                FOREIGN KEY (unit_id) REFERENCES units (idunit)
-              );
+                FOREIGN KEY (unit_id) REFERENCES units (idunit),
+                PRIMARY KEY (paint_id, unit_id)
+              )
                 `);
 
     console.log('Tables created successfully.');

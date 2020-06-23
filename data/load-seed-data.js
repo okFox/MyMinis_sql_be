@@ -3,6 +3,7 @@ const client = require('../lib/client');
 const paintsData = require('./paints.js');
 const unitsData = require('./units.js');
 const modelsData = require('./models.js');
+const refData = require('./model_paint.js');
 
 run();
 
@@ -41,13 +42,24 @@ async function run() {
     await Promise.all(
       modelsData.map(model => {
         return client.query(`
-                    INSERT INTO models (idpaint, idunit, description, image)
-                    VALUES ($1, $2, $3, $4);
+                    INSERT INTO models (idunit, description, image)
+                    VALUES ($1, $2, $3);
                 `,
-        [model.idpaint, model.idunit, model.description, model.image]);
+        [model.idunit, model.description, model.image]);
       })
     );
     console.log('models entered');
+
+    await Promise.all(
+      refData.map(ref => {
+        return client.query(`
+                    INSERT INTO model_paint (paint_id, unit_id)
+                    VALUES ($1, $2);
+                `,
+        [ref.paint_id, ref.unit_id]);
+      })
+    );
+    console.log('reference data entered');
 
     console.log('seed data load complete');
   }
