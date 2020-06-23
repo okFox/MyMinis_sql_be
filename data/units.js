@@ -13,16 +13,14 @@ module.exports = [
     faction: null,
     type: ['terrain'],
     game: 'Warcry',
-    painted: false,
-    models: []
+    painted: false
   },
   { 
     title: 'Iron Golems',
     faction: 'irongolems',
     type: ['unit', 'warband'],
     game: 'Warcry',
-    painted: false,
-    models: []
+    painted: false
   },
   {  
     title: 'Untamed Beasts',
@@ -33,49 +31,51 @@ module.exports = [
   },
   {  
     title: 'Corvus Cabal',
-    type: ['corvuscabal', 'warband'],
+    faction: 'Corvus Cabal',
+    type: ['unit', 'warband'],
     game: 'Warcry',
-    painted: false,
-    models: []
+    painted: false
   },
   {  
     title: 'Splintered Fang',
     faction: 'splinteredfang',
     type: ['unit', 'warband'],
     game: 'Warcry',
-    painted: false,
-    models: []
+    painted: false
   },
   {  
     title: 'Chaotic Beasts',
     faction: null,
     type: ['enemy'],
     game: 'Warcry',
-    painted: false,
-    models: []
+    painted: false
   },
   {  
     title: 'Start Collecting: Fyreslayers',
     faction: 'fyreslayers',
     type: ['army', 'unit'],
     game: 'Warhammer: Age of Sigmar',
-    painted: false,
-    models: []
+    painted: false
   },
   {  
     title: 'Doomseeker',
     faction: 'fyreslayers',
     type: ['single', 'fyreslayers'],
     game: 'Warhammer: Age of Sigmar',
-    painted: false,
-    models: ['Joe Doomseeker']
+    painted: false
   },
   {  
     title: 'Start Collecting: Space Marines',
     type: ['army', 'spacemarines', 'adeptusastartes'],
     game: 'Warhammer: 40k',
-    painted: false,
-    models: []
+    painted: false
   },
+  {  
+    title: 'Apothecary',
+    faction: 'Space Marines',
+    type: ['single', 'spacemarines', 'adeptusastartes'],
+    game: 'Warhammer: 40k',
+    painted: false
+  }
 
 ];
