@@ -10,12 +10,12 @@ async function run() {
 
     await client.query(`
     CREATE TABLE paints (
-                  idpaint INTEGER PRIMARY KEY NOT NULL,
+                  idpaint SERIAL PRIMARY KEY,
                   name VARCHAR(256) NOT NULL,
                   formula VARCHAR(256)
               );
               CREATE TABLE units (
-                idunit SERIAL PRIMARY KEY NOT NULL,
+                idunit SERIAL PRIMARY KEY,
                 title VARCHAR(512),
                 faction VARCHAR(256),
                 type TEXT[],
@@ -25,7 +25,7 @@ async function run() {
               CREATE TABLE models (
                 paint_id INTEGER,
                 unit_id INTEGER,
-                PRIMARY KEY (idpaint, idunit),
+                PRIMARY KEY (paint_id, unit_id),
                 description VARCHAR(512) NOT NULL,
                 image TEXT,
                 FOREIGN KEY (paint_id) REFERENCES paints (idpaint),
