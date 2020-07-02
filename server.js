@@ -4,8 +4,9 @@ const client = require('./lib/client');
 
 // Initiate database connection
 client.connect();
+console.log('client connected');
 
-//import route files
+
 
 const app = require('./lib/app');
 
