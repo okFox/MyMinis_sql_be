@@ -11,6 +11,18 @@ units.get ('/', async(req, res, next) => {
   }
 });
 
+units.post('/', async(req, res, next) => {
+  try {
+    const result = await client.query('INSERT INTO units (title, faction, type, game, painted) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+      [req.body.title, req.body.faction, req.body.type, req.body.game, req.body.painted]
+    );
+    return res.json(result.rows[0]);
+    
+  } catch(err) {
+    return next(err);
+  }
+});
+
 
 
 module.exports = units;
