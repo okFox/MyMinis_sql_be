@@ -1,14 +1,15 @@
-const db = require('../db');
 const express = require('express');
-const app = express();
+const paints = express.Router();
+const client = require('../lib/client');
 
-//https://node-postgres.com/guides/project-structure
 
-app.get('/:id', (req, res, next) => {
-  db.query('SELECT * FROM paints WHERE id = $1', [req.params.id], (err, res) => {
-    if(err) {
-      return next(err);
-    }
-    res.send(res.rows[0]);
-  });
+paints.get ('/', async(req, res, next) => {
+  try {
+    const result = await client.query('SELECT * FROM paints');
+    return res.json(result.rows);
+  } catch(err) {
+    return next(err);
+  }
 });
+
+module.exports = paints;
