@@ -35,6 +35,15 @@ units.patch('/:id', async(req, res, next) => {
   }
 });
 
+units.delete('/:id', async(req, res, next) => {
+  try {
+    await client.query('DELETE from units WHERE idunit=$1', [req.params.id]);
+    return res.json({ message: `Unit ${req.params.id} deleted successfully` });
+  } catch(err) {
+    return next(err);
+  }
+});
+
 
 
 module.exports = units;
