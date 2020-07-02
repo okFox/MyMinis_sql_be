@@ -17,7 +17,19 @@ units.post('/', async(req, res, next) => {
       [req.body.title, req.body.faction, req.body.type, req.body.game, req.body.painted]
     );
     return res.json(result.rows[0]);
-    
+
+  } catch(err) {
+    return next(err);
+  }
+});
+
+units.patch('/:id', async(req, res, next) => {
+  try {
+    const result = await client.query('UPDATE units SET title=$1, faction=$2, type=$3, game=$4, painted=$5 WHERE idunit=$6 RETURNING *',
+      [req.body.title, req.body.faction, req.body.type, req.body.game, req.body.painted, req.params.id]
+    );
+    return res.json(result.rows[0]);
+
   } catch(err) {
     return next(err);
   }
